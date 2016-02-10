@@ -1,3 +1,12 @@
+# Git
+
+## Changing all the commits with new author & email
+
+Warning! Only do this if you're the sole author. It rewrites everything!
+
+git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Fadhli Rahim'; GIT_AUTHOR_EMAIL='fadhli@charaku.co'; GIT_COMMITTER_NAME='Fadhli Rahim'; GIT_COMMITTER_EMAIL='fadhli@charaku.co';" HEAD
+
+
 # Sys Admin
 
 ## Logrotate
