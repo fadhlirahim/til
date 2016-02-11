@@ -28,3 +28,15 @@ git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Fadhli Rahim'; GIT_AUTHOR_EM
 scp ssh_username@remote_host:<file_in_remote_address> <your_local_file>
 
 scp your_username@remotehost.edu:foobar.txt /some/local/directory
+
+
+# Ruby
+
+## Deep stringify keys (hash.deep_stringify_keys)
+
+Convert all symbol keys to string. I found that it's useful for test purposes on rails controller. I use Oj to dump/load the objects into hash/json.
+
+```ruby
+{ :test => "this", :object => {:nested => "keys"} }.deep_stringify_keys
+=> {"test"=>"this", "object"=>{"nested"=>"keys"}}
+```
