@@ -31,6 +31,18 @@ scp ssh_username@remote_host:<file_in_remote_address> <your_local_file>
 
 scp your_username@remotehost.edu:foobar.txt /some/local/directory
 
+## Finding out which port is in use
+
+Using lsof comamnd
+
+```
+sudo lsof -i :80
+
+COMMAND  PID  USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+nginx   1618  root    6u  IPv4  10141      0t0  TCP *:http (LISTEN)
+nginx   1620 nginx    6u  IPv4  10141      0t0  TCP *:http (LISTEN)
+```
+
 # Ruby
 
 ## Deep stringify keys (hash.deep_stringify_keys)
