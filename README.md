@@ -53,3 +53,60 @@ Convert all symbol keys to string. I found that it's useful for test purposes on
 { :test => "this", :object => {:nested => "keys"} }.deep_stringify_keys
 => {"test"=>"this", "object"=>{"nested"=>"keys"}}
 ```
+
+# AWS Elasticbeanstalk
+
+## eb cli
+
+http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html
+
+## Rails setup
+
+### database.yml
+
+For database.yml, don't include any sensitive information. Beanstalk allows ENV configuration that allows DATABASE_URL string e.g `postgres://username:password@url/dbname/`
+
+All ENV can be configured inside aws beanstalk web app.
+
+### YAML config
+
+You can include a custom .config yaml file in `.ebextensions` folder. These are the minimum setup for me to successfully deploy a rails app
+that has Gem source from rubygems.org & github.
+
+
+```yaml
+# These are things that make sense for any Ruby application
+option_settings:
+  - option_name: BUNDLE_DISABLE_SHARED_GEMS
+    value: "1"
+  - option_name: BUNDLE_PATH
+    value: "vendor/bundle"
+
+# Install git in order to be able to bundle gems from git
+packages:
+  yum:
+    git: []
+    patch: []
+    postgresql93-devel: []
+
+# http://agileleague.com/blog/deploying-elastic-beanstalk-using-symlinks-avoid-checking-database-yml-git/
+# Symlink the ondeck database.yml to database.yml.example
+files:
+  "/opt/elasticbeanstalk/hooks/appdeploy/pre/01a_symlink_database_yml.sh":
+    mode: "000777"
+    content: |
+      #!/bin/bash
+      cd /var/app/ondeck/config
+      ln -sf database.yml.example database.yml
+
+```
+
+### Restarting Puma in elasticbeanstalk
+
+`initctl restart puma`
+
+Location of `restart.sh` file
+
+`/opt/elasticbeanstalk/hooks/restartappserver/enact/01_restart.sh`
+
+
