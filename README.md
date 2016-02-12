@@ -110,3 +110,29 @@ Location of `restart.sh` file
 `/opt/elasticbeanstalk/hooks/restartappserver/enact/01_restart.sh`
 
 
+### CORS setup for assets on Nginx
+
+This mainly works in Rails /assets folder where web fonts compiled assets are
+
+Include a map of domains to allow inside the `http { .. }` block
+```
+map $http_origin $cors_header {
+  default     ""; #empty causes the Access-Control-Allow-Origin header to be empty
+  ~*localhost:3000 "$http_origin";
+  ~*.charaku.com   "$http_origin";
+  ~*.charaku.co    "$http_origin";
+}
+```
+
+Then in your `server` block, include the following
+```
+location /assets {
+  alias /var/app/current/public/assets;
+  gzip_static on;
+  gzip on;
+  expires max;
+  add_header Cache-Control public;
+  add_header Access-Control-Allow-Origin $cors_header;
+}
+```
+
