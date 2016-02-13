@@ -43,6 +43,10 @@ nginx   1618  root    6u  IPv4  10141      0t0  TCP *:http (LISTEN)
 nginx   1620 nginx    6u  IPv4  10141      0t0  TCP *:http (LISTEN)
 ```
 
+### Dns lookup
+
+`dig domain-name`
+
 # Ruby
 
 ## Deep stringify keys (hash.deep_stringify_keys)
