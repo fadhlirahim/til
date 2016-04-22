@@ -140,3 +140,15 @@ location /assets {
 }
 ```
 
+### Rails console in elasticbeanstalk
+
+Go to root path of deployed app
+
+`cd /var/app/current`
+
+`sudo su`
+
+`bundle exec rake rails:update:bin`
+
+`./bin/rails c`
+
