@@ -152,3 +152,18 @@ Go to root path of deployed app
 
 `./bin/rails c`
 
+
+### AWS S3 cli command
+
+if you're using ec2 amazon linux images, you can use the aws s3 cli
+
+http://docs.aws.amazon.com/cli/latest/userguide/using-s3-commands.html
+
+To list all the buckets in your s3
+
+`aws s3 ls`
+
+To cp a file from a bucket
+
+`aws s3 cp s3://key/file .`
+
