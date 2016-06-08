@@ -1,6 +1,10 @@
 # TIL
 
-An unordered list of things I with computers
+An unordered list of things I do with computers
+
+![love-to-code](http://i.imgur.com/TeMS6u0.gif)
+
+_photo credit: http://imgur.com/gallery/TeMS6u0_
 
 ## Git
 
