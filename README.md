@@ -1,6 +1,8 @@
 # TIL
 
-An unordered list of things I do with computers
+An unordered list of things I do with computers.
+
+Some bunch of stuff I put at https://gist.github.com/fadhlirahim
 
 ![love-to-code](http://i.imgur.com/TeMS6u0.gif)
 
