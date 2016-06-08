@@ -215,3 +215,13 @@ finally install the desired client version
 ```
 sudo apt-get install postgresql-client-9.5
 ```
+
+### How to postgres dump & restore database
+
+```
+pg_dump -Fc -d database_name -h localhost -p 5432 -U user > database_name.dump
+```
+
+```
+pg_restore -h localhost -p 5432 --verbose --clean -e --if-exists -d database_name -U username -n public database_name.dump
+```
