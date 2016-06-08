@@ -1,6 +1,10 @@
-# Git
+# TIL
 
-## Changing all the commits with new author & email
+An unordered list of things I with computers
+
+## Git
+
+### Changing all the commits with new author & email
 
 Warning! Only do this if you're the sole author. It rewrites everything!
 
@@ -9,9 +13,9 @@ git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Fadhli Rahim'; GIT_AUTHOR_EM
 ```
 
 
-# Sys Admin
+## Sys Admin
 
-## Logrotate
+### Logrotate
 
 ```
 /opt/raynor/current/log/*.log {
@@ -25,13 +29,13 @@ git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Fadhli Rahim'; GIT_AUTHOR_EM
 }
 ```
 
-## Secure copy scp
+### Secure copy scp
 
 scp ssh_username@remote_host:<file_in_remote_address> <your_local_file>
 
 scp your_username@remotehost.edu:foobar.txt /some/local/directory
 
-## Finding out which port is in use
+### Finding out which port is in use
 
 Using lsof comamnd
 
@@ -47,9 +51,9 @@ nginx   1620 nginx    6u  IPv4  10141      0t0  TCP *:http (LISTEN)
 
 `dig domain-name`
 
-# Ruby
+## Ruby
 
-## Deep stringify keys (hash.deep_stringify_keys)
+### Deep stringify keys (hash.deep_stringify_keys)
 
 Convert all symbol keys to string. I found that it's useful for test purposes on rails controller. I use Oj to dump/load the objects into hash/json.
 
@@ -58,15 +62,15 @@ Convert all symbol keys to string. I found that it's useful for test purposes on
 => {"test"=>"this", "object"=>{"nested"=>"keys"}}
 ```
 
-# AWS Elasticbeanstalk
+## AWS Elasticbeanstalk
 
-## eb cli
+### eb cli
 
 http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html
 
-## Rails setup
+### Rails setup
 
-### database.yml
+#### database.yml
 
 For database.yml, don't include any sensitive information. Beanstalk allows ENV configuration that allows DATABASE_URL string e.g `postgres://username:password@url/dbname/`
 
