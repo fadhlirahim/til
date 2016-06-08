@@ -187,3 +187,31 @@ FROM pg_catalog.pg_database d
     END DESC -- nulls first
     LIMIT 20
 ```
+
+### Install postgresql-client-9.5 on Ubuntu 14
+
+```
+sudo apt-get update
+```
+
+Create a file in source list with the following:
+
+```
+sudo vim /etc/apt/sources.list.d/pgdg.list
+
+deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main
+```
+
+then import the repository signing key, and update the package lists
+
+```
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc |   sudo apt-key add -
+
+sudo apt-get update
+```
+
+finally install the desired client version
+
+```
+sudo apt-get install postgresql-client-9.5
+```
