@@ -68,6 +68,54 @@ Convert all symbol keys to string. I found that it's useful for test purposes on
 => {"test"=>"this", "object"=>{"nested"=>"keys"}}
 ```
 
+## Supervisord
+
+Install supervisord on ubuntu 14 trusty
+
+```
+sudo apt-get update
+sudo apt-get install supervisor
+```
+
+Add a configuration to run a program in /etc/supervisor/conf.d
+
+Example of a supervisord configuration. This is how you want to start kong using supervisor
+
+
+```
+[program:kong]
+command=/usr/local/bin/kong start &
+stdout_logfile=/var/log/supervisor/%(program_name)s.log
+autostart=yes
+autorestart=true
+redirect_stderr=true
+stopasgroup=true
+stopsignal=INT
+;directory=
+;environment=
+
+
+```
+
+Oh gotcha on running kong with supervisord. You have to make sure the command `kong start` is not daemonize http://supervisord.org/subprocess.html#nondaemonizing-of-subprocesses
+
+In order to that, edit `kong.yml` file and edit nginx config `daemon off;`
+
+Then
+
+`sudo supervisorctl reread`
+
+`sudo supervisorctl update`
+
+`sudo supervisorctl start kong`
+
+You should see something like this in your terminal
+
+```
+kong                             RUNNING    pid 9728, uptime 0:03:55
+```
+
+
 ## AWS Elasticbeanstalk
 
 ### eb cli
