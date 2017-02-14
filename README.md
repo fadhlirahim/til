@@ -198,6 +198,10 @@ location /assets {
 }
 ```
 
+### Location of nginx in elasticbeanstalk
+
+`/etc/nginx/`
+
 ### Rails console in elasticbeanstalk
 
 Go to root path of deployed app
