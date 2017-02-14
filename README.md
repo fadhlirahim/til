@@ -225,6 +225,27 @@ To cp a file from a bucket
 
 `aws s3 cp s3://key/file .`
 
+### AWS S3 Upload files using Cyberduck CLI
+
+The terminal command for cyberduck (a bit outdate but gets the job done on the terminal)
+
+https://blog.cyberduck.io/2015/01/15/terminal/
+
+https://trac.cyberduck.io/wiki/help/en/howto/cli
+
+To list files in an s3 bucket:
+
+```
+duck --region ap-southeast-1 --username <AwsKey> --password <AwsSecret) -y --list s3://bucket/
+```
+
+* which you can then pipe to a file in local disk
+
+To upload files to s3
+
+```
+duck --region ap-southeast-1 --username <AwsKey> --password <AwsSecret> -y -r 3 --parallel --existing skip --upload s3://bucket/ *.csv
+```
 
 ## Postgres
 
